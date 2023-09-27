@@ -5,10 +5,25 @@ dotenv.config();
 
 const app = express();
 
+// Middlewares
+app.use(express.json());
+
 // RingCentral pkg's
 const RC = require('@ringcentral/sdk').SDK;
 
 // Routes
+
+app.post('/api/webhook', async (req, res) => {
+  try {
+    // Set validation token to response header
+    res.setHeader('Validation-Token', req.headers['validation-token'] || '');
+
+    res.json({ message: '¡Webhook is work!' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 /**
  * Get subscription list
@@ -44,7 +59,7 @@ app.post('/api/subscription', async (_req, res) => {
       eventFilters: ['/restapi/v1.0/account/~/extension/~/telephony/sessions?missedCall=true'],
       deliveryMode: {
         transportType: 'WebHook',
-        address: 'https://webhook.site/8396d153-f59c-4b02-9d13-a20adc3424a5',
+        address: 'https://9fee-206-1-237-156.ngrok.io/api/webhook',
       },
       expireIn: 3600,
     };
