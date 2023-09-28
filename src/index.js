@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const axios = require('axios');
 
 // Utils
 const ringcentralUtils = require('./utils/ringcentral');
@@ -17,10 +18,26 @@ const RC = require('@ringcentral/sdk').SDK;
 // Routes
 
 /**
+ * Send webhook
+ */
+app.post('/api/webhook/send', async (req, res) => {
+  try {
+    await axios.post(process.env.ZOHO_SERVER_URL, req.body);
+    res.json({ message: '¡Sended!' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+/**
  * Receive webhooks
  */
 app.post('/api/webhook', async (req, res) => {
   try {
+    console.log('body ===> ', req.body);
+    console.log('parties body ===> ', req.body?.body?.parties?.[0]);
+
     // RingCentral webhook test
     if (req.headers['validation-token']) {
       // Set validation token to response header
@@ -33,6 +50,12 @@ app.post('/api/webhook', async (req, res) => {
     if (req.body?.body?.expiresIn <= ringcentralUtils.constants.SUBSCRIPTION_TIME_REMAINING) {
       await ringcentralUtils.renewSubscription(req.body?.subscriptionId);
       return res.status(204);
+    }
+
+    // Missed call webhook
+    if (req.body?.body?.parties?.[0]?.missedCall === true) {
+      await axios.post(process.env.ZOHO_SERVER_URL, req.body);
+      return res.status(200);
     }
 
     res.json({ message: '¡Successfully!' });
