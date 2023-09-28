@@ -1,0 +1,16 @@
+{
+  "uuid": "5502620198400226866",
+  "event": "/restapi/v1.0/account/827488005/extension/827488005/telephony/sessions",
+  "timestamp": "2023-09-28T14:45:50.752Z",
+  "subscriptionId": "aa1bfc6a-2f64-4050-a5e2-020f2b0f89a8",
+  "ownerId": "827488005",
+  "body": {
+    "sequence": 7,
+    "sessionId": "18244054005",
+    "telephonySessionId": "s-a1d14792bbddez18adc4068adz9daee0000",
+    "serverId": "10.29.20.121.TAM",
+    "eventTime": "2023-09-28T14:45:50.660Z",
+    "parties": ["[Object]"],
+    "origin": { "type": "Call" }
+  }
+}

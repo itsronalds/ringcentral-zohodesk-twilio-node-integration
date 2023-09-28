@@ -1,0 +1,30 @@
+{
+  "uuid": "2951592114059434652",
+  "event": "/restapi/v1.0/account/827488005/extension/827488005/telephony/sessions",
+  "timestamp": "2023-09-28T17:51:11.843Z",
+  "subscriptionId": "4c26949b-53d7-4bf4-a970-a519a34e051b",
+  "ownerId": "827488005",
+  "body": {
+    "sequence": 7,
+    "sessionId": "18245428005",
+    "telephonySessionId": "s-a1d145729492fz18adcea7214zb58ae0000",
+    "serverId": "10.29.20.87.TAM",
+    "eventTime": "2023-09-28T17:51:11.743Z",
+    "parties": [
+      {
+        "accountId": "827488005",
+        "extensionId": "827488005",
+        "id": "p-a1d145729492fz18adcea7214zb58ae0000-2",
+        "direction": "Inbound",
+        "to": { "phoneNumber": "+19043099963", "name": "Alexander Morales", "extensionId": "827488005" },
+        "from": { "phoneNumber": "+17866042105" },
+        "status": { "code": "Disconnected", "reason": "CallerDropped", "rcc": false },
+        "park": {},
+        "missedCall": true,
+        "standAlone": false,
+        "muted": false
+      }
+    ],
+    "origin": { "type": "Call" }
+  }
+}
