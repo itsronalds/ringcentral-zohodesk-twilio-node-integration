@@ -2,10 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 const axios = require('axios');
 
+// Activate environment
+dotenv.config();
+
 // Utils
 const ringcentralUtils = require('./utils/ringcentral');
-
-dotenv.config();
+const twilioUtils = require('./utils/twilio');
 
 const app = express();
 
@@ -220,6 +222,24 @@ app.post('/api/subscription/:id/renew', async (req, res) => {
     const response = await request.json();
 
     res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+/**
+ * Send message through of Twilio
+ */
+app.post('/api/messages', async (req, res) => {
+  try {
+    const response = await twilioUtils.sendMessage(req.body.phoneNumber);
+
+    if (response?.sid) {
+      return res.json({ message: '¡Operation completed!' });
+    }
+
+    res.status(response.status).json({ message: response.message });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });

@@ -1,0 +1,24 @@
+{
+  "body": "Sent from your Twilio trial account - Hi! you will soon be attended by one of our agents.",
+  "numSegments": "1",
+  "direction": "outbound-api",
+  "from": "+18449983465",
+  "to": "+13058733578",
+  "dateUpdated": "2023-10-02T16:27:14.000Z",
+  "price": null,
+  "errorMessage": null,
+  "uri": "/2010-04-01/Accounts/AC2c6cb88ff680865a47a128aa3f7a8191/Messages/SM7dea44b323a0cac56ddae9f6aa661458.json",
+  "accountSid": "AC2c6cb88ff680865a47a128aa3f7a8191",
+  "numMedia": "0",
+  "status": "queued",
+  "messagingServiceSid": null,
+  "sid": "SM7dea44b323a0cac56ddae9f6aa661458",
+  "dateSent": null,
+  "dateCreated": "2023-10-02T16:27:14.000Z",
+  "errorCode": null,
+  "priceUnit": "USD",
+  "apiVersion": "2010-04-01",
+  "subresourceUris": {
+    "media": "/2010-04-01/Accounts/AC2c6cb88ff680865a47a128aa3f7a8191/Messages/SM7dea44b323a0cac56ddae9f6aa661458/Media.json"
+  }
+}
