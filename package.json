@@ -1,10 +1,10 @@
 {
-  "name": "ringcentral-integration-node",
+  "name": "ringcentral-zohodesk-twilio-node-integration",
   "version": "1.0.0",
   "private": true,
-  "description": "RingCentral Proof of Concepts Webhook Integration Test",
+  "description": "RingCentral Zoho Desk Twilio Proof of Concepts Integration Test",
   "main": "index.js",
-  "repository": "https://github.com/itsronalds/ringcentral-integration-node.git",
+  "repository": "https://github.com/itsronalds/ringcentral-zohodesk-twilio-node-integration.git",
   "author": "Ronald Abu Saleh <ronald.abusaleh@gmail.com>",
   "license": "MIT",
   "scripts": {
