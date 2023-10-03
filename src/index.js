@@ -7,7 +7,11 @@ dotenv.config();
 
 // Utils
 const ringcentralUtils = require('./utils/ringcentral');
+const zohoUtils = require('./utils/zoho');
 const twilioUtils = require('./utils/twilio');
+
+// Services
+const zohoServices = require('./services/zoho');
 
 const app = express();
 
@@ -240,6 +244,58 @@ app.post('/api/messages', async (req, res) => {
     }
 
     res.status(response.status).json({ message: response.message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+/**
+ * Get tickets from Zoho
+ */
+app.get('/api/tickets', async (_req, res) => {
+  try {
+    const config = await zohoUtils.credentials(process.env.COMPANY_ID);
+
+    if (!config) {
+      throw new Error('No config found');
+    }
+
+    const { accessToken, domainURL, organizationId } = config;
+
+    const response = await zohoServices.getTickets(domainURL, organizationId, accessToken);
+
+    if (!response) {
+      throw new Error('Error getting tickets');
+    }
+
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+/**
+ * Create ticket in Zoho
+ */
+app.post('/api/tickets', async (req, res) => {
+  try {
+    const config = await zohoUtils.credentials(process.env.COMPANY_ID);
+
+    if (!config) {
+      throw new Error('No config found');
+    }
+
+    const { accessToken, domainURL, organizationId } = config;
+
+    const response = await zohoServices.createTicket(domainURL, organizationId, accessToken, req.body);
+
+    if (!response) {
+      throw new Error('Error creating ticket');
+    }
+
+    res.json(response);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
