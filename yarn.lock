@@ -828,7 +828,7 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-twilio@^4.18.0:
+twilio@4.18.0:
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/twilio/-/twilio-4.18.0.tgz#408a1c6a38895393c08ef6457587b7e17d2f54b7"
   integrity sha512-f8etm0l0G2zexwM6wdpjUjLe1iPLLsr0sWTMkkkLUGQ2GAaQcCclXQa6t4gNCDcvgH5wa3vOuTL9p0Ny9cdChQ==
