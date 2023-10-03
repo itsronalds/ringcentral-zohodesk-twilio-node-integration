@@ -1,11 +1,9 @@
-# ringcentral-integration-node
+# ringcentral-zohodesk-twilio-node-integration
 
-RingCentral Proof of Concepts Integration Test
+RingCentral Zoho Desk Twilio Proof of Concepts Integration Test
 
 ## References
 
-> * [Webhook First Start](https://developers.ringcentral.com/guide/notifications/webhooks/quick-start)
-
-> * [Events and Notifications](https://developers.ringcentral.com/api-reference/Subscriptions/listSubscriptions)
-
-> * [Missed Call Notification Type](https://developers.ringcentral.com/api-reference/Extension-Telephony-Sessions-Event)
+> * [Webhook first start](https://developers.ringcentral.com/guide/notifications/webhooks/quick-start)
+> * [Events and notifications](https://developers.ringcentral.com/api-reference/Subscriptions/listSubscriptions)
+> * [Missed call notification type](https://developers.ringcentral.com/api-reference/Extension-Telephony-Sessions-Event)
