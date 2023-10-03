@@ -62,3 +62,20 @@ module.exports.credentials = async (companyId) => {
     return null;
   }
 };
+
+module.exports.formatMissedcallTicket = (data) => {
+  const phoneNumber = data.body.parties[0].from.phoneNumber;
+
+  return {
+    subject: 'RingCentral: Missed call',
+    description: `Missed call from: ${phoneNumber}`,
+    contactId: '819166000001031001',
+    departmentId: '819166000000006907',
+    category: 'RingCentral',
+    subCategory: 'Missed call',
+    phone: '+17866042105',
+    status: 'Open',
+    assigneeId: '819166000000139001',
+    cf: data,
+  };
+};

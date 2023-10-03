@@ -60,8 +60,40 @@ app.post('/api/webhook', async (req, res) => {
 
     // Missed call webhook
     if (req.body?.body?.parties?.[0]?.missedCall === true) {
-      await axios.post(process.env.ZOHO_SERVER_URL, req.body);
-      return res.status(200);
+      const phoneNumber = req.body?.body?.parties?.[0]?.from?.phoneNumber;
+
+      // Validate if phone number is valid
+      if (!/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phoneNumber)) {
+        return res.status(400).json({ message: 'Invalid phone number' });
+      }
+
+      // Get Zoho Desk config
+      const config = await zohoUtils.credentials(process.env.COMPANY_ID);
+
+      if (!config) {
+        throw new Error('No config found');
+      }
+
+      const { accessToken, domainURL, organizationId } = config;
+
+      // Create ticket in Zoho
+      const ticket = zohoUtils.formatMissedcallTicket(req.body);
+
+      // Send ticket to Zoho Desk
+      const zohoResponse = await zohoServices.createTicket(domainURL, organizationId, accessToken, ticket);
+
+      if (!zohoResponse) {
+        throw new Error('Error creating ticket');
+      }
+
+      // Send message through of Twilio
+      const twilioResponse = await twilioUtils.sendMessage(phoneNumber);
+
+      if (!twilioResponse || !twilioResponse?.sid) {
+        throw new Error('Error sending message');
+      }
+
+      return res.json({ message: '!Successfully!' });
     }
 
     res.json({ message: '¡Successfully!' });
