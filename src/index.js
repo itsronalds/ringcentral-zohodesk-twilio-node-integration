@@ -44,11 +44,9 @@ app.post('/api/webhook', async (req, res) => {
     console.log('body ===> ', req.body);
     console.log('parties body ===> ', req.body?.body?.parties?.[0]);
 
-    // RingCentral webhook test
-    if (req.headers['validation-token']) {
-      // Set validation token to response header
+    // re-send validation token to RingCentral
+    if (req.headers.hasOwnProperty('validation-token')) {
       res.setHeader('Validation-Token', req.headers['validation-token'] || '');
-
       return res.json({ message: '¡Webhook is work!' });
     }
 
