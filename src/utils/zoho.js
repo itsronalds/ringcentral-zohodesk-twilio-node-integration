@@ -73,7 +73,24 @@ module.exports.formatMissedcallTicket = (data) => {
     departmentId: '819166000000006907',
     category: 'RingCentral',
     subCategory: 'Missed call',
-    phone: '+17866042105',
+    phone: phoneNumber,
+    status: 'Open',
+    assigneeId: '819166000000139001',
+    cf: data,
+  };
+};
+
+module.exports.formatVoicemailTicket = (data) => {
+  const phoneNumber = data.body.from.phoneNumber;
+
+  return {
+    subject: 'RingCentral: Voicemail',
+    description: `Voicemail from: ${phoneNumber}`,
+    contactId: '819166000001031001',
+    departmentId: '819166000000006907',
+    category: 'RingCentral',
+    subCategory: 'Voicemail',
+    phone: phoneNumber,
     status: 'Open',
     assigneeId: '819166000000139001',
     cf: data,
