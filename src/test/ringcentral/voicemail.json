@@ -1,0 +1,23 @@
+{
+  "uuid": "5665494674360062738",
+  "event": "/restapi/v1.0/account/827488005/extension/827488005/voicemail",
+  "timestamp": "2023-10-18T20:33:27.914Z",
+  "subscriptionId": "d462bf3e-409c-48bf-b754-f9c3e0243ee6",
+  "ownerId": "827488005",
+  "body": {
+    "uri": "https://api.devtest.ringcentral.com/restapi/v1.0/account/827488005/extension/827488005/message-store/14145991005",
+    "id": 14145991005,
+    "to": [["Object"]],
+    "from": { "phoneNumber": "+14077932799", "phoneNumberInfo": ["Object"] },
+    "type": "VoiceMail",
+    "creationTime": "2023-10-18T20:33:18.000Z",
+    "readStatus": "Unread",
+    "priority": "Normal",
+    "attachments": [["Object"]],
+    "direction": "Inbound",
+    "availability": "Alive",
+    "messageStatus": "",
+    "lastModifiedTime": "2023-10-18T20:33:18.245Z",
+    "vmTranscriptionStatus": "NotAvailable"
+  }
+}

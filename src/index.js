@@ -96,7 +96,7 @@ app.post('/api/webhook', async (req, res) => {
 
     // Voicemail webhook
     if (req.body?.body?.type === 'VoiceMail') {
-      const phoneNumber = data.body.from.phoneNumber;
+      const phoneNumber = req.body?.body.from.phoneNumber;
 
       // Validate if phone number is valid
       if (!/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phoneNumber)) {
